@@ -9,7 +9,7 @@ class TwitterMediaClientSpec extends ClientSpec {
 
   class TwitterMediaClientSpecContext extends ClientSpecContext with TwitterMediaClient
 
-  "Twitter Media Client" should {
+  "Twitter Media OldClient" should {
 
     // TODO - test actual media upload?
 

@@ -6,9 +6,9 @@ import spray.http._
 import spray.httpx.unmarshalling.{FromResponseUnmarshaller, Deserializer => _}
 import com.danielasfregola.twitter4s.http.marshalling.{BodyEncoder, Parameters}
 import com.danielasfregola.twitter4s.http.oauth.OAuthProvider
-import com.danielasfregola.twitter4s.providers.{ActorRefFactoryProvider, TokenProvider}
+import com.danielasfregola.twitter4s.providers.{ActorSystemProvider, TokenProvider}
 
-private[twitter4s] trait OAuthClient extends Client with TokenProvider with ActorRefFactoryProvider {
+private[twitter4s] trait OAuthClient extends OldClient with TokenProvider with ActorSystemProvider {
 
   protected lazy val oauthProvider = new OAuthProvider(consumerToken, accessToken)
 

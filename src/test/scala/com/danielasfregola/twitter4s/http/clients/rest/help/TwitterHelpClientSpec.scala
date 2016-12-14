@@ -8,7 +8,7 @@ class TwitterHelpClientSpec extends ClientSpec {
 
   class TwitterHelpClientSpecContext extends ClientSpecContext with TwitterHelpClient
 
-  "Twitter Help Client" should {
+  "Twitter Help OldClient" should {
 
     "get twitter configuration" in new TwitterHelpClientSpecContext {
       val result: Configuration = when(getConfiguration()).expectRequest { request =>

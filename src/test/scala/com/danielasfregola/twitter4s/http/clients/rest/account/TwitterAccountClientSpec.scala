@@ -10,7 +10,7 @@ class TwitterAccountClientSpec extends ClientSpec {
 
   class TwitterAccountClientSpecContext extends ClientSpecContext with TwitterAccountClient
 
-  "Twitter Account Client" should {
+  "Twitter Account OldClient" should {
 
     "retrieve account settings" in new TwitterAccountClientSpecContext {
       val result: Settings = when(getSettings).expectRequest { request =>

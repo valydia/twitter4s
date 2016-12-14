@@ -9,7 +9,7 @@ class TwitterSuggestionClientSpec extends ClientSpec {
 
   class TwitterSuggestionClientSpecContext extends ClientSpecContext with TwitterSuggestionClient
 
-  "Twitter Suggestion Client" should {
+  "Twitter Suggestion OldClient" should {
 
     "get suggestions of a category" in new TwitterSuggestionClientSpecContext {
       val slug = "twitter"

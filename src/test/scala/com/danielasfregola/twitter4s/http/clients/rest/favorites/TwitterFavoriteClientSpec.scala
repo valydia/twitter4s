@@ -10,7 +10,7 @@ class TwitterFavoriteClientSpec extends ClientSpec {
 
   class TwitterFavoriteClientSpecContext extends ClientSpecContext with TwitterFavoriteClient
 
-  "Twitter Favorite Client" should {
+  "Twitter Favorite OldClient" should {
 
     "get favorites" in new TwitterFavoriteClientSpecContext {
       val result: Seq[Tweet] = when(getFavoriteStatusesForUser("DanielaSfregola")).expectRequest { request =>

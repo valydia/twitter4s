@@ -9,7 +9,7 @@ class TwitterGeoClientSpec extends ClientSpec {
 
   class TwitterGeoClientSpecContext extends ClientSpecContext with TwitterGeoClient
 
-  "Twitter Geo Client" should {
+  "Twitter Geo OldClient" should {
 
     "get a geo place by id" in new TwitterGeoClientSpecContext {
       val placeId = "df51dec6f4ee2b2c"

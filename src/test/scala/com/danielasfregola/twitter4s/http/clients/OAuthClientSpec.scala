@@ -16,7 +16,7 @@ class OAuthClientSpec extends ClientSpec {
     def exampleRequest(): Future[Unit] = Get("an-example-request").respondAs[Unit]
   }
 
-  "OAuth Client" should {
+  "OAuth OldClient" should {
 
     "throw twitter exception to twitter rejection" in new OAuthClientSpecContext {
       val response = {

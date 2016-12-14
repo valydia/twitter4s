@@ -9,7 +9,7 @@ class TwitterMuteClientSpec extends ClientSpec {
 
   class TwitterMuteClientSpecContext extends ClientSpecContext with TwitterMuteClient
 
-  "Twitter Mute Client" should {
+  "Twitter Mute OldClient" should {
 
     "mute a user" in new TwitterMuteClientSpecContext {
       val result: User = when(muteUser("marcobonzanini")).expectRequest { request =>

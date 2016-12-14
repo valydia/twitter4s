@@ -9,7 +9,7 @@ class TwitterSavedSearchClientSpec extends ClientSpec {
 
   class TwitterSavedSearchClientSpecContext extends ClientSpecContext with TwitterSavedSearchClient
 
-  "Twitter Saved Search Client" should {
+  "Twitter Saved Search OldClient" should {
 
     "get saved searches" in new TwitterSavedSearchClientSpecContext {
       val result: Seq[SavedSearch] = when(getSavedSearches).expectRequest { request =>

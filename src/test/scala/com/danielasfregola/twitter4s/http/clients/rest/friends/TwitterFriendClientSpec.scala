@@ -10,7 +10,7 @@ class TwitterFriendClientSpec extends ClientSpec {
 
   class TwitterFriendClientSpecContext extends ClientSpecContext with TwitterFriendClient
 
-  "Twitter Friend Client" should {
+  "Twitter Friend OldClient" should {
 
     "get friends ids of a specific user by id" in new TwitterFriendClientSpecContext {
       val result: UserIds = when(getFriendIdsForUserId(2911461333L)).expectRequest { request =>

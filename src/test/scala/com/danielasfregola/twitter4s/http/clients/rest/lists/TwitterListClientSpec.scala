@@ -10,7 +10,7 @@ class TwitterListClientSpec extends ClientSpec {
 
   class TwitterListClientSpecContext extends ClientSpecContext with TwitterListClient
 
-  "Twitter List Client" should {
+  "Twitter List OldClient" should {
 
     "get lists for a user" in new TwitterListClientSpecContext {
       val result: Seq[TwitterList] = when(getListsForUser("DanielaSfregola")).expectRequest { request =>

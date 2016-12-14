@@ -10,7 +10,7 @@ class TwitterBlockClientSpec extends ClientSpec {
 
   class TwitterBlockClientSpecContext extends ClientSpecContext with TwitterBlockClient
 
-  "Twitter Block Client" should {
+  "Twitter Block OldClient" should {
 
     "get blocked users" in new TwitterBlockClientSpecContext {
       val result: Users = when(getBlockedUsers()).expectRequest { request =>

@@ -9,7 +9,7 @@ class TwitterTrendClientSpec  extends ClientSpec {
 
   class TwitterTrendClientSpecContext extends ClientSpecContext with TwitterTrendClient
 
-  "Twitter Trend Client" should {
+  "Twitter Trend OldClient" should {
 
     "get global trends" in new TwitterTrendClientSpecContext {
       val result: LocationTrends = when(getGlobalTrends()).expectRequest { request =>

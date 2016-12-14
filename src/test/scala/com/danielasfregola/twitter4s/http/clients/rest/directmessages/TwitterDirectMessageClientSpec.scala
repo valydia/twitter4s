@@ -10,7 +10,7 @@ class TwitterDirectMessageClientSpec extends ClientSpec {
 
   class TwitterDirectMessageClientSpecContext extends ClientSpecContext with TwitterDirectMessageClient
 
-  "Twitter Direct Message Client" should {
+  "Twitter Direct Message OldClient" should {
 
     "retrieve a specific direct message" in new TwitterDirectMessageClientSpecContext {
       val result: DirectMessage = when(getDirectMessage(649298254383980547L)).expectRequest { request =>

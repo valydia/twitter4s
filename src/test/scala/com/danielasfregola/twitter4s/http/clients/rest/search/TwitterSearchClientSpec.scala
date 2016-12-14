@@ -9,7 +9,7 @@ class TwitterSearchClientSpec extends ClientSpec {
 
   class TwitterSearchClientSpecContext extends ClientSpecContext with TwitterSearchClient
 
-  "Twitter Search Client" should {
+  "Twitter Search OldClient" should {
 
     "search for tweets" in new TwitterSearchClientSpecContext {
       val result: StatusSearch = when(searchTweet("#scala")).expectRequest { request =>

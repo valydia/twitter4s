@@ -10,7 +10,7 @@ class TwitterSiteClientSpec extends ClientSpec {
 
   class TwitterSiteClientSpecContext extends TwitterStreamingSpecContext with TwitterSiteClient
 
-  "Twitter Site Streaming Client" should {
+  "Twitter Site Streaming OldClient" should {
 
     "start a filtered site stream" in new TwitterSiteClientSpecContext {
       val result: Unit =

@@ -11,7 +11,7 @@ class TwitterApplicationClientSpec extends ClientSpec {
 
   class TwitterApplicationClientSpecContext extends ClientSpecContext with TwitterApplicationClient
 
-  "Twitter Application Client" should {
+  "Twitter Application OldClient" should {
 
     "get application rate limits for some resources" in new TwitterApplicationClientSpecContext {
       val result: RateLimits = when(getRateLimits(Resource.Account, Resource.Statuses)).expectRequest { request =>

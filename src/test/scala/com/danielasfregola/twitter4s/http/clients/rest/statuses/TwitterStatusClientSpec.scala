@@ -9,7 +9,7 @@ class TwitterStatusClientSpec extends ClientSpec {
 
   class TwitterStatusClientSpecContext extends ClientSpecContext with TwitterStatusClient
 
-  "Twitter Status Client" should {
+  "Twitter Status OldClient" should {
 
     "perform a mentions timeline request" in new TwitterStatusClientSpecContext {
       val result: Seq[Tweet] = when(getMentionsTimeline(count = 10)).expectRequest { request =>

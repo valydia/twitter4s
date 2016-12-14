@@ -9,7 +9,7 @@ class TwitterUserClientSpec extends ClientSpec {
 
 class TwitterUserClientSpecContext extends ClientSpecContext with TwitterUserClient
 
-  "Twitter User Client" should {
+  "Twitter User OldClient" should {
 
     "retrieve users" in new TwitterUserClientSpecContext {
       val result: Seq[User] = when(getUsers("marcobonzanini", "odersky")).expectRequest { request =>

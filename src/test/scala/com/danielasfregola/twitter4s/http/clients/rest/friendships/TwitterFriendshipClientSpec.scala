@@ -10,7 +10,7 @@ class TwitterFriendshipClientSpec extends ClientSpec {
 
   class TwitterFriendshipClientSpecContext extends ClientSpecContext with TwitterFriendshipClient
 
-  "Twitter Friendship Client" should {
+  "Twitter Friendship OldClient" should {
 
     "get all blocked users" in new TwitterFriendshipClientSpecContext {
       val result: Seq[Long] = when(getNoRetweetsUserIds).expectRequest { request =>

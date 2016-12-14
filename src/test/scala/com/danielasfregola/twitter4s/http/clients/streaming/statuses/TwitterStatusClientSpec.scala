@@ -10,7 +10,7 @@ class TwitterStatusClientSpec extends ClientSpec {
 
   class TwitterStatusClientSpecContext extends TwitterStreamingSpecContext with TwitterStatusClient
 
-  "Twitter Status Streaming Client" should {
+  "Twitter Status Streaming OldClient" should {
 
     "start a filtered status stream" in new TwitterStatusClientSpecContext {
       val result: Unit =
