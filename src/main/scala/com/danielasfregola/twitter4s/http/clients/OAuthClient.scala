@@ -5,12 +5,12 @@ import spray.http.HttpMethods._
 import spray.http._
 import spray.httpx.unmarshalling.{FromResponseUnmarshaller, Deserializer => _}
 import com.danielasfregola.twitter4s.http.marshalling.{BodyEncoder, Parameters}
-import com.danielasfregola.twitter4s.http.oauth.OAuthProvider
+import com.danielasfregola.twitter4s.http.oauth.OldOAuthProvider
 import com.danielasfregola.twitter4s.providers.{ActorSystemProvider, TokenProvider}
 
 private[twitter4s] trait OAuthClient extends OldClient with TokenProvider with ActorSystemProvider {
 
-  protected lazy val oauthProvider = new OAuthProvider(consumerToken, accessToken)
+  protected lazy val oauthProvider = new OldOAuthProvider(consumerToken, accessToken)
 
   def pipeline[T: FromResponseUnmarshaller] = { implicit request =>
     request ~> (withOAuthHeader ~> logRequest ~> sendReceive ~> logResponse(System.currentTimeMillis) ~> unmarshalResponse[T])

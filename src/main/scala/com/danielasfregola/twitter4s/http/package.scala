@@ -2,7 +2,7 @@ package com.danielasfregola.twitter4s
 
 import java.net.URLEncoder
 
-import spray.http.Uri
+import akka.http.scaladsl.model.Uri
 
 package object http {
 
@@ -14,6 +14,11 @@ package object http {
   }
 
   implicit class RichUri(val uri: Uri) {
+
+    def endpoint = s"${uri.scheme}:${uri.authority}${uri.path}"
+  }
+
+  implicit class RichOldUri(val uri: spray.http.Uri) {
 
     def endpoint = s"${uri.scheme}:${uri.authority}${uri.path}"
   }
