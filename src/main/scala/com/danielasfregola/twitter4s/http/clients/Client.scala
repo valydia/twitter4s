@@ -72,46 +72,4 @@ trait Client extends JsonSupport with ActorContextExtractor { self: ActorSystemP
     log.debug("{} {} ({}) | {}", request.method, request.uri, response.status, response.entity)
     response
   }
-
-//  // TODO - logRequest, logResponse customisable?
-//  def pipeline[T: FromResponseUnmarshaller]: HttpRequest => Future[T]
-//
-//  private[twitter4s] def sendReceiveAs[T: FromResponseUnmarshaller](request: HttpRequest) =
-//    pipeline apply request
-//
-//  private[twitter4s] def sendReceive = spray.client.pipelining.sendReceive
-//
-//  def logRequest: HttpRequest => HttpRequest = { request =>
-//    log.info("{} {}", request.method, request.uri)
-//    log.debug("{} {} | {} | {}", request.method, request.uri, request.entity.asString, request)
-//    request
-//  }
-//
-//  def logResponse(requestStartTime: Long)(implicit request: HttpRequest): HttpResponse => HttpResponse = { response =>
-//    val elapsed = System.currentTimeMillis - requestStartTime
-//    log.info("{} {} ({}) | {}ms", request.method, request.uri, response.status, elapsed)
-//    log.debug("{} {} ({}) | {}", request.method, request.uri, response.status, response.entity.asString)
-//    response
-//  }
-//
-//  private[twitter4s] def unmarshalResponse[T: FromResponseUnmarshaller]: HttpResponse ⇒ T = { hr =>
-//    hr.status.isSuccess match {
-//      case true => hr ~> unmarshal[T]
-//      case false =>
-//        val errors = Try {
-//          Serialization.read[Errors](hr.entity.asString)
-//        } getOrElse { Errors() }
-//        throw new TwitterException(hr.status, errors)
-//    }
-//  }
-//
-//  private[twitter4s] def unmarshalEmptyResponse: HttpResponse ⇒ Unit = { hr =>
-//    if (hr.status.isFailure) {
-//      val errors = Try {
-//        Serialization.read[Errors](hr.entity.asString)
-//      } getOrElse { Errors() }
-//      throw new TwitterException(hr.status, errors)
-//    }
-//  }
-
 }

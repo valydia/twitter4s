@@ -18,6 +18,7 @@ package object http {
     def endpoint = s"${uri.scheme}:${uri.authority}${uri.path}"
   }
 
+  // TODO - remove me!
   implicit class RichOldUri(val uri: spray.http.Uri) {
 
     def endpoint = s"${uri.scheme}:${uri.authority}${uri.path}"
