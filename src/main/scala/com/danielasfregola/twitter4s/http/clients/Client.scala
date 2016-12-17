@@ -6,40 +6,39 @@ import com.danielasfregola.twitter4s.providers.ActorSystemProvider
 import com.danielasfregola.twitter4s.util.ActorContextExtractor
 import org.json4s.native.Serialization
 
-import scala.concurrent.Future
 import scala.util.Try
-import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{HttpRequest, HttpResponse, StatusCodes}
-import akka.stream.ActorMaterializer
+import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
 import akka.stream.scaladsl.{Sink, Source}
-import scala.concurrent.duration._
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.duration._
+import scala.concurrent.Future
 
 trait Client extends JsonSupport with ActorContextExtractor { self: ActorSystemProvider =>
-
-  def host: String
-
-  val withLogRequest = false
-  val withLogRequestResponse = true
+  
+  def withLogRequest: Boolean
+  def withLogRequestResponse: Boolean
 
   private[twitter4s] implicit class RichHttpRequest(val request: HttpRequest) {
     def respondAs[T: Manifest]: Future[T] = sendReceiveAs[T](request)
   }
-
-  val httpClient = Http().outgoingConnection(host = host)
 
   def sendReceiveAs[T: Manifest](httpRequest: HttpRequest): Future[T] =
     sendAndReceive(httpRequest, response => json4sUnmarshaller[T].apply(response.entity))
 
   private def sendAndReceive[T](request: HttpRequest, f: HttpResponse => Future[T]): Future[T] = {
     implicit val rqst = request
+
+    val connection = {
+      val host = request.uri.authority.toString
+      Http().outgoingConnection(host)
+    }
+
     val requestStartTime =  System.currentTimeMillis
     if (withLogRequest) logRequest(request)
     Source
     .single(request)
-    .via(httpClient)
+    .via(connection)
     .mapAsync(1) { implicit response => unmarshal(requestStartTime, f) }
     .runWith(Sink.head)
   }

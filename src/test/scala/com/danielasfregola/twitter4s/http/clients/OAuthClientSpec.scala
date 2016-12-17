@@ -11,7 +11,7 @@ import com.danielasfregola.twitter4s.exceptions.{Errors, TwitterError, TwitterEx
 
 class OAuthClientSpec extends ClientSpec {
 
-  class OAuthClientSpecContext extends ClientSpecContext with OAuthClient {
+  class OAuthClientSpecContext extends ClientSpecContext with OldOAuthClient {
 
     def exampleRequest(): Future[Unit] = Get("an-example-request").respondAs[Unit]
   }

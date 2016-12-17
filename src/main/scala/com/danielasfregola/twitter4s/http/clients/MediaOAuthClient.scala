@@ -1,14 +1,10 @@
 package com.danielasfregola.twitter4s.http.clients
 
-import spray.client.pipelining._
-import spray.http._
-import spray.httpx.unmarshalling.{Deserializer => _}
-
 private[twitter4s] trait MediaOAuthClient extends OAuthClient {
 
-  def formDataPipeline = { implicit request: HttpRequest =>
-    request ~> (withSimpleOAuthHeader ~> logRequest ~> sendReceive ~> logResponse(System.currentTimeMillis) ~> unmarshalEmptyResponse)
-  }
+  override val withLogRequest: Boolean = true
+  override val withLogRequestResponse: Boolean = false
+
 }
 
 

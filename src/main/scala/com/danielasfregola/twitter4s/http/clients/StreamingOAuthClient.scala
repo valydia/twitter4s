@@ -21,7 +21,7 @@ import com.danielasfregola.twitter4s.exceptions.OldTwitterException
 
 import scala.util.Success
 
-private[twitter4s] trait StreamingOAuthClient extends OAuthClient {
+private[twitter4s] trait StreamingOAuthClient extends OldOAuthClient {
 
   def streamingPipeline = { (requester: ActorRef, request: HttpRequest) =>
     request ~> (withOAuthHeader ~> logRequest ~> sendReceiveStream(requester) ~>
